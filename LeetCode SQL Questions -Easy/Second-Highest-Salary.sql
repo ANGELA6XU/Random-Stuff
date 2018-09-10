@@ -45,3 +45,13 @@ FROM Employee
 WHERE (
 	SELECT MAX(Salary) 
 	FROM Employee) > Salary;
+	
+	
+# 方法3: NOT IN 用法。从一个 不包含整表最大值 的集合中选取最大值。
+
+SELECT MAX(Salary) AS SecondHighestSalary 
+FROM Employee
+WHERE Salary 
+NOT IN 
+(SELECT MAX(Salary) 
+	FROM Employee);
